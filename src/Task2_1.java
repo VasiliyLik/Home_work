@@ -11,20 +11,28 @@ public class Task2_1 {
         int[] array = {12, 23, 9, 56, 765, 3, 81, 435, 827, 115};
         int min, max;
         min = max = array[0];
-        int i;
-        for (i = 1; i < 10; i++) {
+
+        int indexOfMin = 0, indexOfMax = 0;
+
+        for (int i = 1; i < 10; i++) {
             if (array[i] < min) min = array[i];
+            if (array[i] < array[indexOfMin]) {  // находим индекс min
+                indexOfMin = i;
+            }
+
             if (array[i] > max) max = array[i];
+            if (array[i] > array[indexOfMax]) {  // находим индекс max
+                indexOfMax = i;
+            }
         }
-        System.out.println("min value = " + min);
-        System.out.println("max value = " + max);
+        System.out.println("min value = " + min + ", индекс " + indexOfMin);
+        System.out.println("max value = " + max + ", индекс " + indexOfMax);
 
         System.out.println();                   //вставка строки для отступа
 
-        for (int j = 0; j < array.length; j++) {
-            if (array[j] == min) array[j] = 0;
-            if (array[j] == max) array[j] = 99;
-        }
+        array[indexOfMin] = 0;                  //замена индекса min
+        array[indexOfMax] = 99;                 //замена индекса max
+
         System.out.println(Arrays.toString(array));
     }
 }
